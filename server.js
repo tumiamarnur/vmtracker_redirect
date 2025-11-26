@@ -1,11 +1,17 @@
-const express = require("express");
-const { createProxyMiddleware } = require("http-proxy-middleware");
+import express from "express";
+import { createProxyMiddleware } from "http-proxy-middleware";
 
 const app = express();
 
-app.use("/", createProxyMiddleware({
-  target: "http://4.235.115.32:3000",
-  changeOrigin: true
-}));
+app.use(
+  "/",
+  createProxyMiddleware({
+    target: "http://4.235.115.32:3000",
+    changeOrigin: true
+  })
+);
 
-app.listen(10000, () => console.log("Proxy running"));
+const port = process.env.PORT || 10000;
+app.listen(port, () => {
+  console.log("Proxy running on port", port);
+});
