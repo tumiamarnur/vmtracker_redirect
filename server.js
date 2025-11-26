@@ -7,11 +7,11 @@ app.use(
   "/",
   createProxyMiddleware({
     target: "http://4.235.115.32:3000",
-    changeOrigin: true
+    changeOrigin: true,
   })
 );
 
-const port = process.env.PORT || 10000;
-app.listen(port, () => {
-  console.log("Proxy running on port", port);
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => {
+  console.log("Proxy running on port " + PORT);
 });
